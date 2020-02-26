@@ -1,0 +1,10 @@
+img {
+    width: 80px;
+    height: 80px;
+}
+
+#user {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}

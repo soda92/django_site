@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'shop/css/index.css' %}">
+    <title>Shop</title>
+</head>
+
+<body>
+    <div id="user">
+        {% if myuser %}
+        hello,<a href="{% url 'shop:user' myuser.id %}">{{myuser.username}}</a>
+        {% else %}
+        <a href="{% url 'shop:login' %}">Login</a>
+        {% endif %}
+    </div>
+    <ul>
+        {% for item in items %}
+        <li>
+            <img src="{% get_static_prefix %}shop/image/{{item.image}}" alt="">
+            <a href="{% url 'shop:detail' item.id %}">{{ item.name }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+
+</html>

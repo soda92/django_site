@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'shop/css/detail.css' %}">
+    <title>Detail</title>
+</head>
+
+<body>
+    <h1>{{item.name}}</h1>
+    <img src="{% get_static_prefix %}shop/image/{{item.image}}" alt="">
+    <ul>
+        <li>
+            price: {{item.price}}
+        </li>
+        <li>
+            description: {{item.description}}
+        </li>
+    </ul>
+    <form action="{% url 'shop:cart' %}" method='POST'>
+        {% csrf_token %}
+        <input type="text" name="item_id" value="{{item.id}}" hidden />
+        <button type="submit">Add to cart</button>
+    </form>
+</body>
+
+</html>
